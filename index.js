@@ -65,7 +65,7 @@ s.codePointAt(0)          // => 72: ES6, works for codepoints > 16 bits
 "x".padEnd(3)             // => "x ": add spaces on the right to a length of 3
 "x".padStart(3, "*")      // => "**x": add stars on the left to a length of 3
 "x".padEnd(3, "-")        // => "x--": add dashes on the right to a length of 3
-                          // Space trimming functions. trim() is ES5; others ES2019
+// Space trimming functions. trim() is ES5; others ES2019
 " test ".trim()           // => "test": remove spaces at start and end
 " test ".trimStart()      // => "test ": remove spaces on left. Also trimLeft
 " test ".trimEnd()        // => " test": remove spaces at right. Also trimRight
