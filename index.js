@@ -101,3 +101,60 @@ let t = Symbol.for("shared");
 s === t                           // => true
 s.toString()                      // => "Symbol(shared)"
 Symbol.keyFor(t)                  // => "shared"
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// Array, Arrays
+// make a copy of arrayOriginal[]
+let arrayCopy = Array.from(arrayOriginal)     
+// compare two arrays
+function equalArrays(a, b) {
+    if (a === b) return true; // Identical arrays are equal
+    if (a.length !== b.length) return false; // Different-size arrays not equal
+    for(let i = 0; i < a.length; i++) { // Loop through all elements
+        if (a[i] !== b[i]) return false; // If any differ, arrays not equal
+    }
+    return true; // Otherwise they are equal
+}
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// Type conversion
+Number("3")    // => 3
+String(false)  // => "false": Or use false.toString()
+Boolean([])    // => true
+////////////////////////////////////////////////////////////////////////////////
+x + ""  // => String(x)
++x      // => Number(x)
+x-0     // => Number(x)
+!!x     // => Boolean(x): Note double !
+////////////////////////////////////////////////////////////////////////////////
+let n = 17;
+let binary = "0b" + n.toString(2); // binary == "0b10001"
+let octal = "0o" + n.toString(8); // octal == "0o21"
+let hex = "0x" + n.toString(16); // hex == "0x11"
+////////////////////////////////////////////////////////////////////////////////
+let n = 123456.789;
+n.toFixed(0)               // => "123457"
+n.toFixed(2)               // => "123456.79"
+n.toFixed(5)               // => "123456.78900"
+n.toExponential(1)         // => "1.2e+5"
+n.toExponential(3)         // => "1.235e+5"
+n.toPrecision(4)           // => "1.235e+5"
+n.toPrecision(7)           // => "123456.8"
+n.toPrecision(10)          // => "123456.7890"
+parseInt("3 blind mice")   // => 3
+parseFloat(" 3.14 meters") // => 3.14
+parseInt("-12.34")         // => -12
+parseInt("0xFF")           // => 255
+parseInt("0xff")           // => 255
+parseInt("-0XFF")          // => -255
+parseFloat(".1")           // => 0.1
+parseInt("0.1")            // => 0
+parseInt(".1")             // => NaN: integers can't start with "."
+parseFloat("$72.47")       // => NaN: numbers can't start with "$"
+parseInt("11", 2)          // => 3: (1*2 + 1)
+parseInt("ff", 16)         // => 255: (15*16 + 15)
+parseInt("zz", 36)         // => 1295: (35*36 + 35)
+parseInt("077", 8)         // => 63: (7*8 + 7)
+parseInt("077", 10)        // => 77: (7*10 + 7)
