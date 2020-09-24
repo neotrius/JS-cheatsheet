@@ -31,8 +31,6 @@ Math.fround(x)            // Round to nearest 32-bit float number
 Math.sinh(x)              // Hyperbolic sine. Also Math.cosh(), Math.tanh()
 Math.asinh(x)             // Hyperbolic arcsine. Also Math.acosh(), Math.atanh()
 ////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
 // Strings
 // Obtaining portions of a string
 let s = "Hello, world";   // Start with some text.
@@ -73,8 +71,6 @@ s.codePointAt(0)          // => 72: ES6, works for codepoints > 16 bits
 s.concat("!")             // => "Hello, world!": just use + operator instead
 "<>".repeat(5)            // => "<><><><><>": concatenate n copies. ES6
 ////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
 // Pattern matching, regex
 let text = "testing: 1, 2, 3"; 	  // Sample text
 let pattern = /\d+/g;          	  // Matches all instances of one or more digits
@@ -83,8 +79,6 @@ text.search(pattern)           	  // => 9: position of first match
 text.match(pattern)            	  // => ["1", "2", "3"]: array of all matches
 text.replace(pattern, "#")     	  // => "testing: #, #, #"
 text.split(/\D+/)              	  // => ["","1","2","3"]: split on nondigits
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 // Symbols
 let strname = "string name";      // A string to use as a property name
@@ -102,8 +96,6 @@ s === t                           // => true
 s.toString()                      // => "Symbol(shared)"
 Symbol.keyFor(t)                  // => "shared"
 ////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
 // Array, Arrays
 // make a copy of arrayOriginal[]
 let arrayCopy = Array.from(arrayOriginal)     
@@ -116,8 +108,6 @@ function equalArrays(a, b) {
     }
     return true; // Otherwise they are equal
 }
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 // Type conversion
 Number("3")    // => 3
@@ -158,3 +148,36 @@ parseInt("ff", 16)         // => 255: (15*16 + 15)
 parseInt("zz", 36)         // => 1295: (35*36 + 35)
 parseInt("077", 8)         // => 63: (7*8 + 7)
 parseInt("077", 10)        // => 77: (7*10 + 7)
+////////////////////////////////////////////////////////////////////////////////
+// toString() and valueOf() methods
+({x:1, y:2}).toString()            // => "[object Object]"
+[1,2,3].toString()                 // => "1,2,3"
+(function(x) { f(x); }).toString() // => "function(x) { f(x); }"
+/\d+/g.toString()                  // => "/\\d+/g"
+(new Date(2020,0,1)).toString()    // => "Wed Jan 01 2020 00:00:00 GMT-0800 (Pacific Standard Time)"
+(new Date(2020,0,1)).valueOf()     // => 1577833200000
+////////////////////////////////////////////////////////////////////////////////
+// destructuing assignment
+let [x,y] = [1] // x == 1; y == undefined
+[x,y] = [1,2,3] // x == 1; y == 2
+[,x,,y] = [1,2,3,4] // x == 2; y == 4
+let [x, ...y] = [1,2,3,4] // y == [2,3,4]
+let [a, [b, c]] = [1, [2,2.5], 3] // a == 1; b == 2; c == 2.5
+let [first, ...rest] = "Hello" // first == "H"; rest == ["e","l","l","o"]
+let {r, g, b} = {r: 0.0, g: 0.0, b: 0.0, a: 1.0} // r == 0.0; g == 0.0; b == 0.0
+//
+const {sin, cos, tan} = Math // Same as const sin=Math.sin, cos=Math.cos, tan=Math.tan
+const { cos: cosine, tan: tangent } = Math // Same as const cosine = Math.cos, tangent = Math.tan;
+// 
+let points = [{x: 1, y: 2}, {x: 3, y: 4}]; // An array of two point objects
+let [{x: x1, y: y1}, {x: x2, y: y2}] = points; // destructured into 4 variables.
+(x1 === 1 && y1 === 2 && x2 === 3 && y2 === 4) // => true
+// 
+let points = { p1: [1,2], p2: [3,4] }; // An object with 2 array props
+let { p1: [x1, y1], p2: [x2, y2] } = points; // destructured into 4 vars
+(x1 === 1 && y1 === 2 && x2 === 3 && y2 === 4) // => true
+//
+let points = [{x: 1, y: 2}, {x: 3, y: 4}];
+let [{x: x1, y: y1}, {x: x2, y: y2}] = points;
+let points2 = [{x: x1, y: y1}, {x: x2, y: y2}]; // points2 == points
+////////////////////////////////////////////////////////////////////////////////
