@@ -76,13 +76,13 @@ s.concat("!")             // => "Hello, world!": just use + operator instead
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 // Pattern matching, regex
-let text = "testing: 1, 2, 3"; // Sample text
-let pattern = /\d+/g;          // Matches all instances of one or more digits
-pattern.test(text)             // => true: a match exists
-text.search(pattern)           // => 9: position of first match
-text.match(pattern)            // => ["1", "2", "3"]: array of all matches
-text.replace(pattern, "#")     // => "testing: #, #, #"
-text.split(/\D+/)              // => ["","1","2","3"]: split on nondigits
+let text = "testing: 1, 2, 3"; 	  // Sample text
+let pattern = /\d+/g;          	  // Matches all instances of one or more digits
+pattern.test(text)             	  // => true: a match exists
+text.search(pattern)           	  // => 9: position of first match
+text.match(pattern)            	  // => ["1", "2", "3"]: array of all matches
+text.replace(pattern, "#")     	  // => "testing: #, #, #"
+text.split(/\D+/)              	  // => ["","1","2","3"]: split on nondigits
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -124,15 +124,15 @@ Number("3")    // => 3
 String(false)  // => "false": Or use false.toString()
 Boolean([])    // => true
 ////////////////////////////////////////////////////////////////////////////////
-x + ""  // => String(x)
-+x      // => Number(x)
-x-0     // => Number(x)
-!!x     // => Boolean(x): Note double !
+x + ""  	   // => String(x)
++x      	   // => Number(x)
+x-0     	   // => Number(x)
+!!x     	   // => Boolean(x): Note double !
 ////////////////////////////////////////////////////////////////////////////////
 let n = 17;
 let binary = "0b" + n.toString(2); // binary == "0b10001"
-let octal = "0o" + n.toString(8); // octal == "0o21"
-let hex = "0x" + n.toString(16); // hex == "0x11"
+let octal = "0o" + n.toString(8);  // octal == "0o21"
+let hex = "0x" + n.toString(16);   // hex == "0x11"
 ////////////////////////////////////////////////////////////////////////////////
 let n = 123456.789;
 n.toFixed(0)               // => "123457"
