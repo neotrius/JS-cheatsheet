@@ -268,3 +268,14 @@ options.quiet   ?? false      // => false: property is not defined
 options.quiet   || false      // => false
 options.n       ?? 10         // => 10: property is null
 options.n       || 10         // => 10
+// typeof operator
+let x
+typeof(x = undefined)         // => "undefined"
+typeof(x = null)              // => "object"
+typeof(x = true, x = false)   // => "boolean"
+typeof(x = 10, x = NaN)       // => "number"
+typeof(x = 9007199254740991n) // => "bigint"
+typeof(x = "hey sweetie")     // => "string"
+typeof(x = Symbol("data"))    // => "symbol"
+typeof(x = function y(){})    // => "function"
+typeof(x = {})                // => "object"
