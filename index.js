@@ -203,3 +203,68 @@ a.fun()    // 1
 a?.fun?.() // 1
 a?.asd?.() // undefined
 ////////////////////////////////////////////////////////////////////////////////
+// the + operator and less than
+1 + 2         // => 3: addition
+"1" + "2"     // => "12": concatenation
+"1" + 2       // => "12": concatenation after number-to-string
+1 + {}        // => "1[object Object]": concatenation after object-to-string
+true + true   // => 2: addition after boolean-to-number
+2 + null      // => 2: addition after null converts to 0
+2 + undefined // => NaN: addition after undefined converts to NaN
+1 + 2 + " blind mice"   // => "3 blind mice"
+1 + (2 + " blind mice") // => "12 blind mice"
+"11" < "3"    // => true: string comparison.
+"11" < 3      // => false: numeric comparison, "11" converted to 11.
+"one" < 3     // => false: numeric comparison, "one" converted to NaN.
+// the in operator
+let point = {x: 1, y: 1} // Define an object
+"x" in point // => true: object has property named "x"
+"z" in point // => false: object has no "z" property.
+"toString" in point // => true: object inherits toString method
+let data = [7,8,9] // An array with elements (indices) 0, 1, and 2
+"0" in data // => true: array has an element "0"
+1 in data // => true: numbers are converted to strings
+3 in data // => false: no element 3
+// instanceof operator
+let d = new Date() // Create a new object with the Date() constructor
+d instanceof Date // => true: d was created with Date()
+d instanceof Object // => true: all objects are instances of Object
+d instanceof Number // => false: d is not a Number object
+let a = [1, 2, 3] // Create an array with array literal syntax
+a instanceof Array // => true: a is an array
+a instanceof Object // => true: all arrays are objects
+a instanceof RegExp // => false: arrays are not regular expressions
+// eval is evil
+// allows you to execute strings of code as if they were independent, top-level scripts
+const geval = eval // Using another name does a global eval
+let x = "global", y = "global" // Two global variables
+function f() { // This function does a local eval
+	let x = "local" // Define a local variable
+	eval("x += 'changed'") // Direct eval sets local variable
+	return x // Return changed local variable
+}
+function g() { // This function does a global eval
+	let y = "local" // A local variable
+	geval("y += 'changed'") // Indirect eval sets global variable
+	return y // Return unchanged local variable
+}
+console.log(f(), x) // Local variable changed: prints "localchanged global":
+console.log(g(), y) // Global variable changed: prints "local globalchanged":
+// ternary operator
+x > 0 ? x : -x // the absolute value of x
+greeting = "hello " + (username ? username : "there")
+// first-defined operator ??
+// If maxWidth is defined, use that. Otherwise, look for a value in
+// the preferences object. If that is not defined, use a hardcoded constant.
+let max = maxWidth ?? preferences.maxWidth ?? 500
+let options = { timeout: 0, title: "", verbose: false, n: null }
+options.timeout ?? 1000       // => 0: as defined in the object
+options.timeout || 1000       // => 1000
+options.title   ?? "Untitled" // => "": as defined in the object
+options.title   || "Untitled" // => "Untitled"
+options.verbose ?? true       // => false: as defined in the object
+options.verbose || true       // => true
+options.quiet   ?? false      // => false: property is not defined
+options.quiet   || false      // => false
+options.n       ?? 10         // => 10: property is null
+options.n       || 10         // => 10
