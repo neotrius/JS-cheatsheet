@@ -279,3 +279,12 @@ typeof(x = "hey sweetie")     // => "string"
 typeof(x = Symbol("data"))    // => "symbol"
 typeof(x = function y(){})    // => "function"
 typeof(x = {})                // => "object"
+// delete operator
+// attempts to delete the object property or array element specified as its operand
+let o = {x: 1, y: 2}
+delete o.x // Delete one of the object properties; returns true.
+typeof o.x // Property does not exist; returns "undefined".
+delete o.x // Delete a nonexistent property; returns true.
+delete 1   // This makes no sense, but it just returns true.
+delete o   // Can't delete a variable; returns false, or SyntaxError in strict mode.
+delete Object.prototype // Undeletable property: returns false, or TypeError in strict mode.
