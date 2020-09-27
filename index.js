@@ -288,3 +288,27 @@ delete o.x // Delete a nonexistent property; returns true.
 delete 1   // This makes no sense, but it just returns true.
 delete o   // Can't delete a variable; returns false, or SyntaxError in strict mode.
 delete Object.prototype // Undeletable property: returns false, or TypeError in strict mode.
+////////////////////////////////////////////////////////////////////////////////
+// for in
+for (let i in {'a':1, 'b':2, 'c':3}) {
+	console.log(i) // a b c
+}
+for (let i in Object.keys({'a':1, 'b':2, 'c':3})) {
+	console.log(i) // 1 2 3
+}
+// for of 
+for (let i of [1,2,3]){
+	console.log(i) // 1 2 3
+}
+for (let [key, value] of new Map([[1, 'one'], [2,'two']])){
+	console.log(key, value)
+	// 1 "one"
+	// 2 "two"
+}
+////////////////////////////////////////////////////////////////////////////////
+// async iterator
+async function printStream(stream){
+	for await(let chunk of stream){
+		console.log(chunk)
+	}
+}
