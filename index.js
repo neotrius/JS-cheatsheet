@@ -315,8 +315,34 @@ async function printStream(stream){
 ////////////////////////////////////////////////////////////////////////////////
 // with
 with(document.forms[0]){
-	name.value = 'new value here';
-	address.value = 'new value here';
-	email.value = 'new value here';
+	name.value = 'new value here'
+	address.value = 'new value here'
+	email.value = 'new value here'
 }
 ////////////////////////////////////////////////////////////////////////////////
+// Object creation
+let obj1 = { x: 10, y: 20 }
+let obj2 = new Object({ x: 10, y: 20 })
+// test Object properties
+'x' in obj1
+'toString' in obj1
+obj1.hasOwnProperty('x')
+obj1.propertyIsEnumerable('x')
+// skip inherited properties
+for (let p in o) {
+	if (!o.hasOwnProperty(o)) continue
+}
+// skip all methods
+for (let p in o) {
+	if (typeof o[p] === 'function') continue
+}
+//
+Object.keys(obj1) // ["x", "y"] -non-enumerable
+Object.getOwnPropertyNames(obj1) // ["x", "y"] +non-enumerable
+Object.getOwnPropertySymbols(obj1) // returns Symbols
+Reflect.ownKeys(obj1) // return all
+Object.assign(obj1, {z:30}) // {x: 10, y: 20, z: 30}
+obj1.x = 12.12; obj1.x.toLocaleString() // 12,12
+// Object serialization
+JSON.stringify({x: 1, y: {z: [false, null, ""]}}) // '{"x":1,"y":{"z":[false,null,""]}}''
+JSON.parse('{"x":1,"y":{"z":[false,null,""]}}') // {x: 1, y: {z: [false, null, ""]}}
